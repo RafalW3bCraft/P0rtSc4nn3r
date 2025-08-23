@@ -1,26 +1,53 @@
-# This entrypoint file to be used in development. Start by reading README.md
-import port_scanner
-from unittest import main
+#!/usr/bin/env python3
+"""
+P0rt$c4nn3r - Professional Port Scanner
+Created by RafalW3bCraft
+Licensed under MIT License
 
-# Called with URL
-ports = port_scanner.get_open_ports("www.freecodecamp.org", [75,85])
-print("Open ports:", ports)
+An interactive terminal-based port scanner with comprehensive 
+65K+ port database and professional features.
+"""
 
-# Called with ip address
-ports = port_scanner.get_open_ports("104.26.10.78", [8079, 8090])
-print("Open ports:", ports)
+import sys
+import os
 
-# Verbose called with ip address and no host name returned -- single open port
-ports = port_scanner.get_open_ports("104.26.10.78", [440, 450], True)
-print(ports + '\n')
+# Add src directory to Python path
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
 
-# Verbose called with ip address and valid host name returned -- single open port
-ports = port_scanner.get_open_ports("137.74.187.104", [440, 450], True)
-print(ports + '\n')
+from ui.interactive_menu import InteractiveMenu
 
-# Verbose called with host name -- multiple ports returned
-ports = port_scanner.get_open_ports("scanme.nmap.org", [20, 80], True)
-print(ports + '\n')
+def main():
+    """Main entry point for P0rt$c4nn3r"""
+    try:
+        # Display professional header
+        print_header()
+        
+        # Initialize and run interactive menu
+        menu = InteractiveMenu()
+        menu.run()
+        
+    except KeyboardInterrupt:
+        print("\n\n[!] Scan interrupted by user. Exiting...")
+        sys.exit(0)
+    except Exception as e:
+        print(f"\n[!] Fatal error: {e}")
+        sys.exit(1)
 
-# Run unit tests automatically
-main(module='test_module', exit=False)
+def print_header():
+    """Display professional application header"""
+    header = """
+╔═══════════════════════════════════════════════════════════════════════════════╗
+║                            P0rt$c4nn3r v2.0                                  ║
+║                        Professional Port Scanner                              ║
+║                                                                               ║
+║  Created by: RafalW3bCraft                                                    ║
+║  License: MIT License                                                         ║
+║  Features: 65,535+ port database, Multi-threading, Export capabilities       ║
+║                                                                               ║
+║  Copyright (c) 2025 RafalW3bCraft. All rights reserved.                      ║
+╚═══════════════════════════════════════════════════════════════════════════════╝
+    """
+    print(header)
+
+if __name__ == "__main__":
+    main()

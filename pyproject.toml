@@ -1,22 +1,42 @@
-[tool.poetry]
-name = "python-template"
-version = "0.1.0"
-description = ""
-authors = ["Your Name <you@example.com>"]
+[project]
+name = "portscan3r"
+version = "2.0.0"
+description = "Professional Network Port Scanner with Enhanced Security Analysis"
+authors = [
+    {name = "RafalW3bCraft", email = "contact@rafalw3bcraft.dev"}
+]
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.6"
+keywords = ["port", "scanner", "security", "networking", "pentesting", "vulnerability", "assessment"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Information Technology",
+    "Topic :: Security",
+    "Topic :: System :: Networking",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "colorama>=0.4.4",
+]
 
-[tool.poetry.dependencies]
-python = ">=3.10.0,<3.11"
+[project.urls]
+Homepage = "https://github.com/RafalW3bCraft/P0rtSc4nn3r"
+Repository = "https://github.com/RafalW3bCraft/P0rtSc4nn3r"
+Issues = "https://github.com/RafalW3bCraft/P0rtSc4nn3r/issues"
+Documentation = "https://github.com/RafalW3bCraft/P0rtSc4nn3r/wiki"
 
-[tool.pyright]
-# https://github.com/microsoft/pyright/blob/main/docs/configuration.md
-useLibraryCodeForTypes = true
-exclude = [".cache"]
-
-[tool.ruff]
-# https://beta.ruff.rs/docs/configuration/
-select = ['E', 'W', 'F', 'I', 'B', 'C4', 'ARG', 'SIM']
-ignore = ['W291', 'W292', 'W293']
+[project.scripts]
+portscan3r = "main:main"
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
